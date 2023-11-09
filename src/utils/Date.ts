@@ -13,8 +13,8 @@ export const formatStringDateToId = (stringDate: string): string => {
 }
 
 export const formatApodIdToDate = (apodId: string): Date => {
-  const day: number = parseInt(apodId.slice(4, 6));
-  const monthIndex: number = parseInt(apodId.slice(6, 8)) - 1;
+  const monthIndex: number = parseInt(apodId.slice(4, 6)) -1;
+  const day: number = parseInt(apodId.slice(6, 8));
   const year: number = parseInt(apodId.slice(0, 4));
 
   return new Date(year, monthIndex, day);
