@@ -22,7 +22,7 @@ const ApodCard = ({apod}: ApodCardProps) => {
   return (
     <Link to={`/apod/${id}`}>
     <Card className="shadow-sm rounded-md border-2 border-gray-200 hover:transition hover:opacity-70">
-      {media_type === "image" ? <Card.Image className="shadow-md md:max-h-80" src={url} alt={title}/>
+      {media_type === "image" ? <Card.Image className="shadow-md h-80 min-w-full" src={url} alt={title}/>
         :
         <iframe className="w-full aspect-video h-80 min-w-full" src={url}></iframe>
       }
