@@ -8,8 +8,8 @@ export const getAPODList = async (firstDate: Date, lastDate: Date): Promise<Apod
       searchParams:
         {
           api_key: import.meta.env.VITE_NASA_API_KEY,
-          end_date: formatToAPOD(lastDate),
-          start_date: formatToAPOD(firstDate),
+          end_date: formatToAPOD(firstDate),
+          start_date: formatToAPOD(lastDate),
         }
     })
     .json()
