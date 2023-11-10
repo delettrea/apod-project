@@ -35,7 +35,7 @@ const ApodList = () => {
       {isError ? <Error/> : isLoading ? <Loading/> :
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {
-            apodList.map((apod: Apod) => {
+            apodList.reverse().map((apod: Apod) => {
               return <ApodCard apod={apod} key={apod.date}/>
             })
           }
