@@ -1,9 +1,18 @@
 import {z} from 'zod';
-import {formatApodIdToDate} from './Date.ts';
 
-export const dateSchema =
-  z
-    .string()
-    .regex(/^(1995(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])|[2-9]\d{3}(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])|20\d{2}(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2]))$/gm)
-    .transform((value) => formatApodIdToDate(value))
-;
+export const dateValidator = z.string().refine((dateString) => {
+  const startDate = new Date('1995-07-01');
+  const currentDate = new Date();
+
+  const isValidDateFormat = /^\d{4}-\d{2}-\d{2}$/.test(dateString);
+
+  if (!isValidDateFormat) {
+    return false;
+  }
+
+  const inputDate = new Date(dateString);
+
+  return startDate <= inputDate && inputDate <= currentDate;
+}, {
+  message: "La date doit être au format YYYY-MM-DD et comprise entre le 1er juillet 1995 et aujourd'hui.",
+}).transform((value) => new Date(value));

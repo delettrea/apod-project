@@ -10,7 +10,7 @@ describe("test apod consultation", () => {
 
   it("should have clickable cards who redirect to card's url", () => {
     cy.get("a:first").click();
-    cy.url().should('include','/apod/20231111');
+    cy.url().should('include','/apod/2023-11-11');
   });
 
   it("should have return button to see all cards in card details", () => {

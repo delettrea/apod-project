@@ -12,10 +12,10 @@ export const formatStringDateToId = (stringDate: string): string => {
   return stringDate.replace(/-/g, '');
 }
 
-export const formatApodIdToDate = (apodId: string): Date => {
-  const monthIndex: number = parseInt(apodId.slice(4, 6)) -1;
-  const day: number = parseInt(apodId.slice(6, 8));
-  const year: number = parseInt(apodId.slice(0, 4));
+export const formatApodDateToDate = (apodDate: string): Date => {
+  const day: number = parseInt(apodDate.slice(4, 6));
+  const monthIndex: number = parseInt(apodDate.slice(6, 8)) -1;
+  const year: number = parseInt(apodDate.slice(0, 4));
 
   return new Date(year, monthIndex, day);
 }

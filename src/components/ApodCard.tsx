@@ -1,7 +1,7 @@
 import {Badge, Card} from 'react-daisyui';
 import {Link} from 'react-router-dom';
 import {Apod} from '../types/Apod.ts';
-import {formatApodIdToDate, formatStringDateToId} from '../utils/Date.ts';
+import {formatApodDateToDate} from '../utils/Date.ts';
 
 type ApodCardProps = {
   apod: Apod,
@@ -16,11 +16,10 @@ const ApodCard = ({apod}: ApodCardProps) => {
     media_type,
   } = apod;
 
-  const id: string = formatStringDateToId(date);
-  const formattedDate: Date = formatApodIdToDate(id);
+  const formattedDate: Date = formatApodDateToDate(date);
 
   return (
-    <Link to={`/apod/${id}`}>
+    <Link to={`/apod/${date}`}>
     <Card className="shadow-sm rounded-md border-2 border-gray-200 hover:transition hover:opacity-70">
       {media_type === "image" ? <Card.Image className="shadow-md h-80 min-w-full" src={url} alt={title}/>
         :
