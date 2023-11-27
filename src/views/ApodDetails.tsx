@@ -5,7 +5,7 @@ import ApodExpandedCard from '../components/ApodExpandedCard.tsx';
 import Error from '../components/Error.tsx';
 import Loading from '../components/Loading.tsx';
 import {getAPOD} from '../api/apod.ts';
-import {dateValidator} from '../utils/Validation.ts';
+import {dateValidator} from '../utils/validation.ts';
 
 const ApodDetails = () => {
   const {apodId} = useParams<string>();
