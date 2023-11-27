@@ -1,7 +1,7 @@
 import {Badge, Card} from 'react-daisyui';
 import {Link} from 'react-router-dom';
 import {Apod} from '../types/Apod.ts';
-import {formatApodDateToDate} from '../utils/Date.ts';
+import {formatApodDateToDate} from '../utils/date.ts';
 
 type ApodCardProps = {
   apod: Apod,

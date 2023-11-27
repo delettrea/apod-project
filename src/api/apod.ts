@@ -1,5 +1,5 @@
 import ky from 'ky';
-import {formatToAPOD} from '../utils/Date.ts';
+import {formatToAPOD} from '../utils/date.ts';
 import {Apod} from '../types/Apod.ts';
 export const getAPODList = async (firstDate: Date, lastDate: Date): Promise<Apod[]> => {
   return ky.get(
