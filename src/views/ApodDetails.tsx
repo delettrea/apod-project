@@ -5,11 +5,11 @@ import ApodExpandedCard from '../components/ApodExpandedCard.tsx';
 import Error from '../components/Error.tsx';
 import Loading from '../components/Loading.tsx';
 import {getAPOD} from '../api/apod.ts';
-import {dateSchema} from '../utils/Validation.ts';
+import {dateValidator} from '../utils/Validation.ts';
 
 const ApodDetails = () => {
   const {apodId} = useParams<string>();
-  const validatedApodId: Date = dateSchema.parse(apodId);
+  const validatedApodId: Date = dateValidator.parse(apodId);
   const apodDate = useRef(validatedApodId);
 
   const [apod, setApod] = useState<Apod | undefined>(undefined)
