@@ -1,5 +1,5 @@
 import react from '@vitejs/plugin-react';
-import { defineConfig } from 'vitest/config';
+import {configDefaults, defineConfig} from 'vitest/config';
 
 export default defineConfig({
   plugins: [react()],
@@ -10,5 +10,6 @@ export default defineConfig({
       IS_REACT_ACT_ENVIRONMENT: 'true',
     },
     include: ['__tests__/**/*.[jt]s?(x)'],
+    exclude: [...configDefaults.exclude, '__tests__/_**/*.[jt]s?(x)']
   },
 });
