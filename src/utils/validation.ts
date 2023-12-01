@@ -1,7 +1,7 @@
 import {z} from 'zod';
 
 export const dateValidator = z.string().refine((dateString) => {
-  const startDate = new Date('1995-07-01');
+  const startDate = new Date(import.meta.env.VITE_NASA_FIRST_APOD_DATE);
   const currentDate = new Date();
 
   const isValidDateFormat = /^\d{4}-\d{2}-\d{2}$/.test(dateString);
