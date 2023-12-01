@@ -1,11 +1,16 @@
-import {Button} from 'react-daisyui';
+import {Loading} from 'react-daisyui';
 
-const Loading = () => {
+type AppLoadingProps = {
+  size?: "lg" | "md" | "sm" | "xs" | undefined,
+  color?: "neutral" | "primary" | "secondary" | "accent" | "ghost" | "info" | "success" | "warning" | "error" | undefined;
+}
+
+const AppLoading = ({color = "primary", size = undefined}: AppLoadingProps) => {
   return (
     <div className="flex justify-center">
-      <Button {...{loading: true}}>loading</Button>
+      <Loading variant="ring" size={size} color={color}/>
     </div>
   );
 };
 
-export default Loading;
+export default AppLoading;

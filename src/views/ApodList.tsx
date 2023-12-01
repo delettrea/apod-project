@@ -1,48 +1,39 @@
-import ApodCard from '../components/ApodCard.tsx';
+import ApodCard from '../components/apod/ApodCard.tsx';
 import {Apod} from '../types/Apod.ts';
-import {useEffect, useState} from 'react';
-import {getAPODList} from '../api/apod.ts';
+import {getApodList} from '../api/apod.ts';
 import Error from '../components/Error.tsx';
 import Loading from '../components/Loading.tsx';
+import useInfiniteScroll from '../hooks/useInfiniteScroll.tsx';
 
 const ApodList = () => {
-  const [apodList, setApodList] = useState<Apod[]>([])
-  // I use const count instead of useState because setCount is not already use
-  // const [count, setCount] = useState(6);
-  const count: number = 6;
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isError, setIsError] = useState<boolean>(false);
+  const NUMBER_PER_PAGE: number = 6;
 
-  useEffect(() => {
-    const firstDate = new Date();
-    const lastDate = new Date();
-    lastDate.setDate(lastDate.getDate() - (count - 1))
+  const {data, error,isLoadingMore, isReachingEnd, isEmpty} = useInfiniteScroll<Apod>(getApodList, NUMBER_PER_PAGE);
 
-    getAPODList(firstDate, lastDate).catch((error) => {
-      setIsError(true);
-      throw error;
-    }).then((response: Apod[]) => setApodList((previous: Apod[]) => [...previous, ...response]));
-    return setIsLoading(false);
-  }, [count]);
+    let issues: Apod[] = [];
+    if (data) {
+      const orderedApod: Apod[][] = data.map((apodList: Apod[]) => apodList.flat().reverse());
+      issues = orderedApod.flat();
+    }
 
-
-  return (
-    <>
-      <p className="text-2xl mb-12 underline decoration-secondary">
-        Liste des {count} dernières photos partagées par la NASA :
+    return <>
+      <p className="text-2xl mb-6 underline decoration-secondary flex justify-between">
+        Liste des dernières photos partagées par la NASA :
       </p>
-
-      {isError ? <Error/> : isLoading ? <Loading/> :
+      {error ? <Error/> :
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {
-            apodList.reverse().map((apod: Apod) => {
+            issues.map((apod: Apod) => {
               return <ApodCard apod={apod} key={apod.date}/>
             })
           }
         </div>
       }
+      {
+        isLoadingMore && !isReachingEnd && !isEmpty ? <div className="my-6"><Loading size="lg"/></div> : <div className="my-6"></div>
+      }
     </>
-  );
-};
+  }
+;
 
 export default ApodList;

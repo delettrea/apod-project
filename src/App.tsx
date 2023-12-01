@@ -2,7 +2,7 @@ import './App.css'
 import Header from './components/Header.tsx';
 import {RouterProvider} from 'react-router-dom';
 import ApodRouter from './views/ApodRouter.tsx';
-import ApodFooter from './components/ApodFooter.tsx';
+import ApodFooter from './components/apod/ApodFooter.tsx';
 
 function App() {
   const apodRouter = ApodRouter;
