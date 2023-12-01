@@ -1,4 +1,4 @@
-import {Apod} from '../src/types/Apod';
+import {Apod} from '../../src/types/Apod';
 
 export const apodFakeData: Apod = {
   copyright: "\nOrazio Mezzio\n",
