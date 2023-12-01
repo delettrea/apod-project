@@ -8,14 +8,12 @@ export const formatToAPOD = (date: Date): string => {
   return [year, month, day].join('-');
 }
 
-export const formatStringDateToId = (stringDate: string): string => {
-  return stringDate.replace(/-/g, '');
-}
-
 export const formatApodDateToDate = (apodDate: string): Date => {
-  const day: number = parseInt(apodDate.slice(4, 6));
-  const monthIndex: number = parseInt(apodDate.slice(6, 8)) -1;
-  const year: number = parseInt(apodDate.slice(0, 4));
+  const date: string[] = apodDate.split('-');
+
+  const year: number = parseInt(date[0]);
+  const monthIndex: number = parseInt(date[1]) - 1;
+  const day: number = parseInt(date[2]);
 
   return new Date(year, monthIndex, day);
 }
