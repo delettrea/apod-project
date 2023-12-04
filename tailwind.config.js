@@ -7,6 +7,7 @@ export default {
     'node_modules/daisyui/dist/**/*.js',
     'node_modules/react-daisyui/dist/**/*.js',
   ],
+  // eslint-disable-next-line no-undef
   plugins: [require('daisyui')],
   daisyui: {
     themes: ["pastel"],
@@ -19,6 +20,9 @@ export default {
       fontFamily: {
         'jost': ['Jost', 'serif'],
       },
+      maxHeight: {
+        '80-screen': '80vh',
+      }
     }
   }
 }

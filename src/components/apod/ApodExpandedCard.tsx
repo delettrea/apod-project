@@ -10,9 +10,9 @@ type ApodExpandedCardProps = {
 const ApodExpandedCard = ({apod, apodDate}: ApodExpandedCardProps) => {
   return (
     <Card {...{bordered: false}} className="rounded-none">
-      {apod.media_type === "image" ? <Card.Image className="min-w-full" src={apod.hdurl ? apod.hdurl : apod.url} alt={apod.title}/>
+      {apod.media_type === "image" ? <Card.Image className="max-h-80-screen" src={apod.hdurl ? apod.hdurl : apod.url} alt={apod.title}/>
         :
-        <iframe className="w-full aspect-video min-w-full" src={apod.url}></iframe>
+        <iframe className="w-full aspect-video max-h-80-screen" src={apod.url}></iframe>
       }
       <Card.Body className="p-4 md:p-12">
         <div className="card-actions justify-end">
