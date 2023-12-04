@@ -23,7 +23,7 @@ const ApodCard = ({apod}: ApodCardProps) => {
     <Card className="shadow-sm rounded-md border-2 border-gray-200 hover:transition hover:opacity-70">
       {media_type === "image" ? <Card.Image className="shadow-md h-80 min-w-full object-cover object-center" src={url} alt={title}/>
         :
-        <iframe className="w-full aspect-video h-80 min-w-full object-cover object-center" src={url}></iframe>
+        <iframe className="rounded-t-md w-full aspect-video h-80 min-w-full object-cover object-center" src={url}></iframe>
       }
       <Card.Body>
         <Card.Title className="truncate underline decoration-secondary underline-offset-2" tag="h2">{title}</Card.Title>
