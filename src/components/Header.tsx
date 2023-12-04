@@ -1,7 +1,10 @@
+import {Link} from 'react-router-dom';
+
 const Header = () => {
   return (
-    <div className="mt-16 mb-10 text-neutral-50	text-center">
-      <h1 className="text-6xl font-bold flex flex-col md:flex-row items-center tracking-wider">
+    <Link to="/">
+      <div className="mt-16 mb-10 text-neutral-50	text-center">
+        <h1 className="text-6xl font-bold flex flex-col md:flex-row items-center tracking-wider">
         <span className='icon'>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                className="md:mr-2 w-24 h-24">
@@ -12,14 +15,15 @@ const Header = () => {
             d="M5.26 17.242a.75.75 0 10-.897-1.203 5.243 5.243 0 00-2.05 5.022.75.75 0 00.625.627 5.243 5.243 0 005.022-2.051.75.75 0 10-1.202-.897 3.744 3.744 0 01-3.008 1.51c0-1.23.592-2.323 1.51-3.008z"/>
         </svg>
         </span>
-        Astronomy Picture of the Day
-      </h1>
-      <p className="py-6 text-lg font-medium">
-        Chaque jour la NASA publie une photo d'astronomie pour en savoir plus sur notre univers.
-        <br/>
-        Vous retrouverez sur ce site les photos partagées par la NASA.
-      </p>
-    </div>
+          Astronomy Picture of the Day
+        </h1>
+        <p className="py-6 text-lg font-medium">
+          Chaque jour la NASA publie une photo d'astronomie pour en savoir plus sur notre univers.
+          <br/>
+          Vous retrouverez sur ce site les photos partagées par la NASA.
+        </p>
+      </div>
+    </Link>
   );
 }
 
